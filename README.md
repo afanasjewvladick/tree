@@ -9,8 +9,14 @@
 # compilation
 $ make assembly
 
-```
+# создание или обновление символической ссылки
+$ make link-create
 
+# удаление символической ссылки
+$ make link-delete
+
+
+```
 
 ## Пример вывода
 
