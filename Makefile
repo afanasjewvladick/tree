@@ -21,13 +21,11 @@ help: ## Show this help
 		Usage example:\n\
 	    	make up"
 
-assembly: ##compilation
+assembly: ## compilation
 	@cd ./src && g++ *.cpp -o tree && cp tree ../build && rm -rf tree
 
 link-delete: ## delete a symbolic link 
-	@cd /usr/local/bin sudo rm -rf tree
+	@cd /usr/local/bin sudo rm -rf treec
 
 link-create: ## creating a symbolic link 
 	sudo ln -sf ~/tree/build/tree /usr/local/bin/tree
-
-

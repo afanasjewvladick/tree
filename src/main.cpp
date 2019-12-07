@@ -21,16 +21,30 @@ string GetCurrentWorkingDir(void) {
 }
  
 int main(){
-  // выводить текущую директорию
+  // Выводит текущую директорию
   cout << GetCurrentWorkingDir() << endl;
+
+  DIR *dir;
+  struct dirent *ent;
+  
   // Открывает коталог
-  DIR *dir = opendir(".");
+  dir = opendir(".");
     if(dir)
     {
-        struct dirent *ent;
         while((ent = readdir(dir)) != NULL)
         {
-          printf( "%s %s\n", "├── " ,ent->d_name );
+          switch (ent->d_type) {
+            case DT_REG:
+              // Файл
+              printf( "%s %s\n","Regular " ,ent->d_name );
+                break;
+            case DT_DIR:
+              // Папка
+              printf( "%s %s\n","Directory " ,ent->d_name );
+                break;
+            default:
+              printf( "%s %s\n", "├── " ,ent->d_name );
+          }
         }
     }
     else
